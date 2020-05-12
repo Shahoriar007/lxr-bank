@@ -11,6 +11,7 @@
 
 </head>
 <body>
+<div id ="login-area">
     <h1 class="bank-title">Welcome to lxr-bank</h1>
 
     <div class="submit-aria">
@@ -21,9 +22,23 @@
         <label for="exampleInputPassword1">Password:</label>
         <input type="password" class="form-control" placeholder="Password">
         <br>
-        <button class="btn btn-success">Login</button>
+        <button class="btn btn-success" id="login">Login</button>
     </div>
+</div>
+<div id="transection-area">
+    <h1>transection Area</h1>
 
-    
+</div>
+
+    <script>
+        const loginBtn = document.getElementById('login');
+        loginBtn.addEventListener('click', function(){
+            const loginArea = document.getElementById('login-area');
+            loginArea.style.display = 'none';
+            const transectionArea = document.getElementById('transection-area');
+            transectionArea.style.display = 'block';
+            
+        })
+    </script>
 </body>
 </html>
