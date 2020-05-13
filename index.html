@@ -26,11 +26,50 @@
     </div>
 </div>
 <div id="transection-area">
-    <h1>transection Area</h1>
+        <div class="row">
+            <div class="col-md-4 ">
+                <div class="diposite status">
+                    <h5>Diposite</h5>
+                    <h2>$ <span id="deposiInaccount">60</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4 ">
+                <div class="withdraw status">
+                    <h5>Withdraw </h5>
+                    <h2>$00</h2>
+                </div>
+            </div>
+            <div class="col-md-4 ">
+                <div class="balance status">
+                    <h5>Current Balence</h5>
+                    <h2>$ <span id="currentBalence">00</span></h2>
+                </div>
+            </div>
+        </div>
 
 </div>
 
+<div class="row">
+    <div class="col-md-6">
+        <div class="submit-aria">
+            <h4>Diposite</h4>
+            <input id="depositAmount" type="text" class="form-control" placeholder="Ammount of $ you diposite">
+            <br>
+            <button id="addDeposit" class="btn btn-success" >Diposite</button>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="submit-aria">
+            <h4>Withdraw</h4>
+            <input type="text" class="form-control" placeholder="Ammount of $ you withdraw">
+            <br>
+            <button  class="btn btn-success">Withdraw</button>
+        </div>
+    </div>
+</div>
+
     <script>
+        //login button event handeler
         const loginBtn = document.getElementById('login');
         loginBtn.addEventListener('click', function(){
             const loginArea = document.getElementById('login-area');
@@ -39,6 +78,32 @@
             transectionArea.style.display = 'block';
             
         })
+
+        //read and write from deposit button press
+        const depositBtn = document.getElementById('addDeposit');
+        depositBtn.addEventListener('click', function(){
+            const depositAmount = document.getElementById('depositAmount').value;
+            const depositNumber = parseFloat(depositAmount);
+            
+            const deposiInaccount = document.getElementById('deposiInaccount').innerText;
+            const totalAmount = parseFloat(deposiInaccount);
+            const totalDeposit = depositNumber+totalAmount;
+
+            document.getElementById('deposiInaccount').innerText = totalDeposit;
+            document.getElementById('depositAmount').value = '';
+
+            updateSpanText('currentBalence', totalDeposit);
+        })
+
+        function updateSpanText(id, totalDeposit ){
+            const currentBalence = document.getElementById(id).innerText;
+            const finalBalence = parseFloat(currentBalence);
+            const totalBalence = totalDeposit+finalBalence;
+            console.log(totalBalence);
+
+            document.getElementById(id).innerText = totalBalence;
+        }
+
     </script>
 </body>
 </html>
